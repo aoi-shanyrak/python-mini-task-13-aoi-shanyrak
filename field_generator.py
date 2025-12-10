@@ -1,7 +1,7 @@
 import os
 import random
 
-from conway_config import (
+from config import (
     VERBOSE,
     TEST_DIR,
     FIELD_NUMBER,

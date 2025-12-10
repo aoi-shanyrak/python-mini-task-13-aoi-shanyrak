@@ -1,6 +1,6 @@
 import numpy as np
 
-from conway_config import FIELD_SIZE
+from config import FIELD_SIZE
 
 
 def lifetime_step_numpy(field: 'np.ndarray') -> 'np.ndarray':

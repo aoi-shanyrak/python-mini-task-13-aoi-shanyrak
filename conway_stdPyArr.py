@@ -1,6 +1,6 @@
 from typing import List
 
-from conway_config import FIELD_SIZE
+from config import FIELD_SIZE
 
 
 def _count_neighboors_stdPyArr(i: int, j: int, field: List[List[0 | 1]]) -> int:

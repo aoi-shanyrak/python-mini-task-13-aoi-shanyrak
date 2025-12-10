@@ -3,12 +3,18 @@ from matplotlib import animation
 from matplotlib.colors import ListedColormap
 import numpy as np
 
-from conway_config import USE_NUMPY, INTERVAL_FOR_ANI
+from config import (
+    USE_NUMPY, 
+    INTERVAL_FOR_ANI, 
+    SAVE_GIF_ANI_PATH, 
+    SAVE_GIF_ANI,
+    FIELD_NUMBER
+    )
 
 
 def animate_history(history):
     fig, ax = plt.subplots(figsize=(10, 10))
-    cmap = ListedColormap(['black', 'white'])
+    cmap = ListedColormap(["black", "white"])
 
     if USE_NUMPY:
         first_frame = history[0]
@@ -34,4 +40,8 @@ def animate_history(history):
         interval=INTERVAL_FOR_ANI,
         blit=True
     )
+    if SAVE_GIF_ANI and FIELD_NUMBER:
+        ani.save(f"{SAVE_GIF_ANI_PATH}/conway_game{FIELD_NUMBER}.gif", 
+                 writer="pillow", fps=1000//INTERVAL_FOR_ANI)
+
     plt.show()

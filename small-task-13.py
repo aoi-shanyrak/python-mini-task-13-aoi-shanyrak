@@ -2,7 +2,7 @@ import numpy as np
 import time
 
 import field_generator
-from conway_config import USE_NUMPY, STEPS, FIELD_SIZE, VERBOSE, ANIMATION
+from config import USE_NUMPY, STEPS, FIELD_SIZE, VERBOSE, ANIMATION
 import conway_stdPyArr
 import conway_numpy
 import animated_field
@@ -58,7 +58,7 @@ def simulate_life(field):
 
 def main():
     if VERBOSE:
-        from conway_config import FIELD_SIZE, STEPS
+        from config import FIELD_SIZE, STEPS
 
         print("=" * 60)
         print("THE CONWAY'S GAME OF LIFE")
