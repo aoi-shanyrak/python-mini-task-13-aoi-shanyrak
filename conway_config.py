@@ -8,14 +8,17 @@ DENSITY_MODES = {
     "random": None,         # Случайная плотность от 2% до 25%
 }
 
-USE_NUMPY = False
+USE_NUMPY = True
 
-DENSITY_MODE = "optimal"
+DENSITY_MODE = "chaos"
 DENSITY_VALUE = None
-TEST_DIR = "fields"
-FIELD_SIZE = 256
+FIELD_SIZE = 64
 STEPS = 128
 
-FIELD_NUMBER = None
+ANIMATION = True
+INTERVAL_FOR_ANI = 50
 
 VERBOSE = True
+
+TEST_DIR = "fields"
+FIELD_NUMBER = None

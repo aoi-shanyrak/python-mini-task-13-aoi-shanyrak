@@ -2,16 +2,23 @@ import numpy as np
 import time
 
 import field_generator
-from conway_config import USE_NUMPY, STEPS, VERBOSE
+from conway_config import USE_NUMPY, STEPS, FIELD_SIZE, VERBOSE, ANIMATION
 import conway_stdPyArr
 import conway_numpy
+import animated_field
 
 
 def load_field(filename: str):
     with open(filename, "r") as f:
         lines = f.readlines()
+    lines = lines[:FIELD_SIZE]
     if USE_NUMPY:
-        pass
+        field_array = np.zeros((FIELD_SIZE, FIELD_SIZE), dtype=np.int8)
+        for i, line in enumerate(lines):
+            line = line[:FIELD_SIZE]
+            for j, char in enumerate(line):
+                field_array[i, j] = 1 if char == "1" else 0
+        return field_array
     else:
         field_list = []
         for line in lines:
@@ -22,14 +29,14 @@ def load_field(filename: str):
 
 def simulate_life(field):
     if USE_NUMPY:
-        pass
+        sim_func = conway_numpy.lifetime_step_numpy
     else:
         sim_func = conway_stdPyArr.lifetime_step_stdPyArr
 
     history = []
     
     if USE_NUMPY:
-        pass
+        history.append(field.copy())
     else:
         history.append([row[:] for row in field])
     
@@ -39,7 +46,7 @@ def simulate_life(field):
         field = sim_func(field)
 
         if USE_NUMPY:
-            pass
+            history.append(field.copy())
         else:
             history.append([row[:] for row in field])
     
@@ -66,6 +73,9 @@ def main():
     field = load_field(field_file)
 
     history = simulate_life(field)
+
+    if ANIMATION:
+        animated_field.animate_history(history)
 
 
 if __name__ == "__main__":
